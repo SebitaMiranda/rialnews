@@ -1,6 +1,7 @@
 require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
   setup do
     @post = posts(:one)
   end
@@ -16,6 +17,24 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create post" do
+    test "should get new" do
+      sign_in users(:one)
+    end
+  test "should create post" do
+  sign_in users(:one)
+  end
+  
+  test "should get edit" do
+  sign_in users(:one)
+  end
+  
+  test "should update post" do
+      sign_in users(:one)
+  end
+  
+   test "should destroy post" do
+      sign_in users(:one)
+   end  
     assert_difference("Post.count") do
       post posts_url, params: { post: { comment: @post.comment, image: @post.image, user_id: @post.user_id } }
     end
